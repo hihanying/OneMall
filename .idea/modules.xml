@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/OneMall.iml" filepath="$PROJECT_DIR$/OneMall.iml" />
+      <module fileurl="file://$PROJECT_DIR$/onemall-admin/onemall-admin.iml" filepath="$PROJECT_DIR$/onemall-admin/onemall-admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/onemall-api/onemall-api.iml" filepath="$PROJECT_DIR$/onemall-api/onemall-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/onemall-auth/onemall-auth.iml" filepath="$PROJECT_DIR$/onemall-auth/onemall-auth.iml" />
+      <module fileurl="file://$PROJECT_DIR$/onemall-common/onemall-common.iml" filepath="$PROJECT_DIR$/onemall-common/onemall-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/onemall-demo/onemall-demo.iml" filepath="$PROJECT_DIR$/onemall-demo/onemall-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/onemall-gateway/onemall-gateway.iml" filepath="$PROJECT_DIR$/onemall-gateway/onemall-gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/onemall-mbg/onemall-mbg.iml" filepath="$PROJECT_DIR$/onemall-mbg/onemall-mbg.iml" />
+    </modules>
+  </component>
+</project>

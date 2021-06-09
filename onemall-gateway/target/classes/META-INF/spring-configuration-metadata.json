@@ -1,0 +1,27 @@
+{
+  "groups": [
+    {
+      "name": "auth",
+      "type": "top.hihanying.mall.gateway.temp.AuthProperties",
+      "sourceType": "top.hihanying.mall.gateway.temp.AuthProperties"
+    },
+    {
+      "name": "secure.ignore",
+      "type": "top.hihanying.mall.gateway.config.IgnoreUrlsConfig",
+      "sourceType": "top.hihanying.mall.gateway.config.IgnoreUrlsConfig"
+    }
+  ],
+  "properties": [
+    {
+      "name": "auth.allow-paths",
+      "type": "java.util.List<java.lang.String>",
+      "sourceType": "top.hihanying.mall.gateway.temp.AuthProperties"
+    },
+    {
+      "name": "secure.ignore.urls",
+      "type": "java.util.List<java.lang.String>",
+      "sourceType": "top.hihanying.mall.gateway.config.IgnoreUrlsConfig"
+    }
+  ],
+  "hints": []
+}

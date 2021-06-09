@@ -1,0 +1,38 @@
+server:
+  port: 9801
+spring:
+  profiles:
+    active: dev
+  application:
+    name: onemall-consumer
+  datasource:
+    url: jdbc:mysql://localhost:3306/demo?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false
+    username: root
+    password: root
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848 # 配置 Nacos 地址
+    gateway:
+      discovery:
+        locator:
+          enabled: true #开启从注册中心动态创建路由的功能
+    stream:
+      kafka:
+        binder:
+          brokers: localhost:9092  # kafka服务地址和端口
+          zk-nodes: localhost:2181  # ZK的集群配置地址和端口
+        bindings:
+          demo-input:
+            destination: demo-topic
+          demo-output:
+            destination: demo-topic
+feign:
+  hystrix:
+    enabled: true
+  client:
+    config:
+      default:
+        connectTimeout: 2000
+        readTimeout: 2000
+

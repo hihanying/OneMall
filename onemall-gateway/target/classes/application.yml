@@ -1,0 +1,104 @@
+server:
+  port: 9201
+spring:
+  profiles:
+    active: dev
+  application:
+    name: onemall-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848 # 配置 Nacos 地址
+    gateway:
+      discovery:
+        locator:
+          enabled: true #开启从注册中心动态创建路由的功能
+          lower-case-service-id: true #使用小写service-id
+      routes: #配置路由路径
+        - id: onemall-admin
+          uri: lb://onemall-admin
+          predicates:
+            - Path=/onemall-admin/**
+          filters:
+            - StripPrefix=1
+            - name: CustomHystrix # 熔断过滤器
+              args:
+                name: defaultFullbackhandler
+                fallbackUri: forward:/defaultFullback # 熔断降级方法
+                arg: admin
+        - id: onemall-auth
+          uri: lb://onemall-auth
+          predicates:
+            - Path=/onemall-auth/**
+          filters:
+            - StripPrefix=1
+        - id: onemall-consumer
+          uri: lb://onemall-consumer
+          predicates:
+            - Path=/onemall-consumer/**
+          filters:
+            - StripPrefix=1
+            - name: CustomHystrix
+              args:
+                name: defaultFullbackhandler
+                fallbackUri: forward:/defaultFullback
+                arg: consumer
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: 'http://localhost:9202/onemall-auth/rsa/publicKey' #配置RSA的公钥访问地址
+  redis:
+    database: 0
+    port: 6379
+    host: localhost
+secure:
+  ignore:
+    urls: #配置白名单路径
+      - "/doc.html"
+      - "/swagger-resources/**"
+      - "/swagger/**"
+      - "/**/v2/api-docs"
+      - "/**/*.js"
+      - "/**/*.css"
+      - "/**/*.png"
+      - "/**/*.ico"
+      - "/webjars/springfox-swagger-ui/**"
+      - "/actuator/**"
+      - "/onemall-auth/oauth/token"
+      - "/onemall-auth/rsa/publicKey"
+      - "/onemall-search/**"
+      - "/onemall-portal/sso/login"
+      - "/onemall-portal/sso/register"
+      - "/onemall-portal/sso/getAuthCode"
+      - "/onemall-portal/home/**"
+      - "/onemall-portal/product/**"
+      - "/onemall-portal/brand/**"
+      - "/onemall-admin/admin/login"
+      - "/onemall-admin/admin/register"
+      - "/onemall-admin/minio/upload"
+#熔断器配置
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          strategy: SEMAPHORE # 超时异常熔断采用hystrix的信号量隔离策略
+          thread:
+            timeoutInMilliseconds: 3000 # 超时时间为3秒
+  shareSecurityContext: true
+
+
+auth:
+  allowPaths: #配置白名单路径
+    - /onemall-auth/**
+    - /doc.html
+    - /swagger-resources/**
+    - /swagger/**
+    - /**/v2/api-docs
+    - /**/*.js
+    - /**/*.css
+    - /**/*.png
+    - /**/*.ico
+    - /webjars/springfox-swagger-ui/**
+    - /actuator/**

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="onemall-api" />
+        <module name="onemall-auth" />
+        <module name="onemall-gateway" />
+        <module name="onemall-common" />
+        <module name="onemall-mbg" />
+        <module name="onemall-demo" />
+        <module name="onemall-admin" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="8">
+      <module name="OneMall" target="1.8" />
+      <module name="onemall-admin" target="8" />
+      <module name="onemall-api" target="8" />
+      <module name="onemall-auth" target="8" />
+      <module name="onemall-common" target="8" />
+      <module name="onemall-consumer" target="8" />
+      <module name="onemall-demo" target="1.8" />
+      <module name="onemall-gateway" target="8" />
+      <module name="onemall-mbg" target="8" />
+      <module name="service-pms" target="1.8" />
+      <module name="tal-client" target="8" />
+      <module name="tal-monitor" target="8" />
+      <module name="tal-pms" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="OneMall" options="-parameters" />
+      <module name="onemall-admin" options="-parameters" />
+      <module name="onemall-api" options="-parameters" />
+      <module name="onemall-auth" options="-parameters" />
+      <module name="onemall-common" options="-parameters" />
+      <module name="onemall-consumer" options="-parameters" />
+      <module name="onemall-demo" options="-parameters" />
+      <module name="onemall-gateway" options="-parameters" />
+      <module name="onemall-mbg" options="-parameters" />
+      <module name="service-pms" options="-parameters" />
+      <module name="tal-client" options="-parameters" />
+      <module name="tal-monitor" options="-parameters" />
+      <module name="tal-pms" options="-parameters" />
+    </option>
+  </component>
+</project>
